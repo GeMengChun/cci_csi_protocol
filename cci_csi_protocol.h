@@ -12,12 +12,13 @@
 
 typedef struct
 {
-    const char    *name;
-    const uint8_t level;
-    const char    type;
-    const int8_t  master_data_len;
-    const int8_t  slave_data_len;
-    const char    *description;
+    const char    *name;                    // 指令名称
+    const uint8_t level;                    // 指令等级
+    const char    type;                     // 指令类型
+    const int8_t  master_data_len;          // 主端发送数据长度
+    const int8_t  slave_data_len;           // 从端响应数据长度
+    uint8_t       (*rpl_handle)(void *ptr); // 从端响应处理函数
+    const char    *description;             // 指令功能描述
 } command_item_t;
 
 #define BUFFER_SIZE  (32)
